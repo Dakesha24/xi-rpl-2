@@ -6,7 +6,7 @@
   --shadow-card: 0 20px 40px rgba(49, 32, 23, 0.2);
   --tab: #f2dfcf;
   --tab-accent: #d5b8a2;
-  --max-width: 760px;
+  --max-width: 980px;
 }
 
 * {
@@ -34,13 +34,13 @@ body {
 .page-shell::before {
   content: "";
   position: absolute;
-  inset: -24px;
+  inset: -36px;
   background-image: url("assets/foto-bersama.png");
   background-size: cover;
   background-position: center;
-  filter: blur(26px);
-  transform: scale(1.08);
-  opacity: 0.62;
+  filter: blur(34px);
+  transform: scale(1.12);
+  opacity: 0.92;
 }
 
 .background-image {
@@ -57,17 +57,18 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.18)),
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.16));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(0, 0, 0, 0.08)),
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.1));
 }
 
 .content-panel {
   position: relative;
   z-index: 1;
   width: min(100%, var(--max-width));
-  min-height: 360px;
+  min-height: clamp(360px, 58vh, 620px);
   align-self: flex-end;
   margin-bottom: 72px;
+  overflow: visible;
 }
 
 .letter-card {
@@ -86,6 +87,7 @@ body {
   touch-action: none;
   user-select: none;
   cursor: grab;
+  z-index: 2;
 }
 
 .letter-card.hidden {
@@ -225,13 +227,12 @@ body {
   }
 
   .content-panel {
-    min-height: 320px;
+    min-height: clamp(320px, 50vh, 460px);
   }
 
   .letter-card {
-    width: 100%;
+    width: min(100%, 460px);
     max-width: 460px;
-    left: 0;
   }
 
   .quote {
@@ -246,7 +247,7 @@ body {
 
   .content-panel {
     margin-bottom: 64px;
-    min-height: 300px;
+    min-height: clamp(300px, 46vh, 380px);
   }
 
   .letter-card {

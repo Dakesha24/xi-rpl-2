@@ -87,13 +87,16 @@ function makeDraggable(element) {
   }
 
   let isDragging = false;
+  let activePointerId = null;
   let startOffsetX = 0;
   let startOffsetY = 0;
 
   const onPointerMove = (event) => {
-    if (!isDragging) {
+    if (!isDragging || event.pointerId !== activePointerId) {
       return;
     }
+
+    event.preventDefault();
 
     const panelRect = contentPanelElement.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
@@ -107,8 +110,13 @@ function makeDraggable(element) {
     element.style.bottom = "auto";
   };
 
-  const stopDragging = () => {
+  const stopDragging = (event) => {
+    if (event && activePointerId !== null && event.pointerId !== activePointerId) {
+      return;
+    }
+
     isDragging = false;
+    activePointerId = null;
     element.classList.remove("dragging");
   };
 
@@ -121,17 +129,18 @@ function makeDraggable(element) {
       return;
     }
 
+    event.preventDefault();
     const elementRect = element.getBoundingClientRect();
     startOffsetX = event.clientX - elementRect.left;
     startOffsetY = event.clientY - elementRect.top;
     isDragging = true;
+    activePointerId = event.pointerId;
     element.classList.add("dragging");
-    element.setPointerCapture(event.pointerId);
   });
 
-  element.addEventListener("pointermove", onPointerMove);
-  element.addEventListener("pointerup", stopDragging);
-  element.addEventListener("pointercancel", stopDragging);
+  window.addEventListener("pointermove", onPointerMove, { passive: false });
+  window.addEventListener("pointerup", stopDragging);
+  window.addEventListener("pointercancel", stopDragging);
 }
 
 function initPage() {
