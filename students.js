@@ -1,5 +1,8 @@
 const schoolInfo = {
-  schoolName: "SMK Contoh Nusantara",
+  schoolName: "SMKN 4 Bandung",
+  className: "XI RPL 2",
+  subjectName: "Penelitian Basis Data",
+  authorName: "Danis Keysara Saputra UPI",
   graduationYear: "2026",
 };
 

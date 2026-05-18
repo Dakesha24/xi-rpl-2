@@ -6,6 +6,8 @@ const studentQuoteElement = document.getElementById("student-quote");
 const studentMessageElement = document.getElementById("student-message");
 const footerTextElement = document.getElementById("footer-text");
 const contentPanelElement = document.querySelector(".content-panel");
+const studentCardTabElement = document.getElementById("student-card-tab");
+const emptyStateTabElement = document.getElementById("empty-state-tab");
 
 function getStudentIdFromUrl() {
   const params = new URLSearchParams(window.location.search);
@@ -40,7 +42,7 @@ function renderFooter() {
     return;
   }
 
-  footerTextElement.textContent = `${schoolInfo.schoolName} | Angkatan ${schoolInfo.graduationYear}`;
+  footerTextElement.textContent = `${schoolInfo.className} | ${schoolInfo.subjectName} | ${schoolInfo.schoolName} | ${schoolInfo.graduationYear} | ${schoolInfo.authorName}`;
 }
 
 function clamp(value, min, max) {
@@ -66,6 +68,17 @@ function resetCardPosition(element) {
   element.style.left = `${defaultX}px`;
   element.style.top = `${defaultY}px`;
   element.style.bottom = "auto";
+}
+
+function toggleLetterCard(element, tabElement) {
+  if (!element || !tabElement) {
+    return;
+  }
+
+  const nextExpanded = element.classList.contains("is-collapsed");
+  element.classList.toggle("is-collapsed", !nextExpanded);
+  tabElement.setAttribute("aria-expanded", String(nextExpanded));
+  resetCardPosition(element);
 }
 
 function makeDraggable(element) {
@@ -104,6 +117,10 @@ function makeDraggable(element) {
       return;
     }
 
+    if (event.target instanceof Element && event.target.closest(".letter-tab")) {
+      return;
+    }
+
     const elementRect = element.getBoundingClientRect();
     startOffsetX = event.clientX - elementRect.left;
     startOffsetY = event.clientY - elementRect.top;
@@ -125,6 +142,8 @@ function initPage() {
   renderFooter();
   makeDraggable(cardElement);
   makeDraggable(emptyStateElement);
+  studentCardTabElement?.addEventListener("click", () => toggleLetterCard(cardElement, studentCardTabElement));
+  emptyStateTabElement?.addEventListener("click", () => toggleLetterCard(emptyStateElement, emptyStateTabElement));
 
   const studentId = getStudentIdFromUrl();
 
