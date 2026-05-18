@@ -53,6 +53,38 @@ body {
   line-height: 1.7;
 }
 
+.qr-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 18px;
+}
+
+.download-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px rgba(216, 136, 111, 0.26);
+}
+
+.download-btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.download-status {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.94rem;
+}
+
 .qr-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -102,6 +134,13 @@ body {
   font-weight: 700;
   text-decoration: none;
   word-break: break-all;
+}
+
+.qr-card__download {
+  display: inline-flex;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--text-soft);
 }
 
 @media (max-width: 640px) {
