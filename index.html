@@ -12,7 +12,10 @@
 </head>
 <body>
   <main class="page-shell">
-    <img class="background-image" src="assets/foto-bersama.png" alt="Foto bersama siswa">
+    <picture class="background-picture">
+      <source srcset="assets/foto-bersama-potrait.png" media="(max-width: 768px) and (orientation: portrait)">
+      <img class="background-image" src="assets/foto-bersama.png" alt="Foto bersama siswa">
+    </picture>
     <div class="background-overlay"></div>
 
     <section class="content-panel">

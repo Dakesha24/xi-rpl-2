@@ -43,6 +43,12 @@ body {
   opacity: 0.92;
 }
 
+.background-picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
 .background-image {
   position: absolute;
   inset: 0;
@@ -243,6 +249,10 @@ body {
 @media (max-width: 480px) {
   .page-shell {
     padding: 14px;
+  }
+
+  .page-shell::before {
+    background-image: url("assets/foto-bersama-potrait.png");
   }
 
   .content-panel {
