@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenangan Perpisahan Siswa</title>
+  <meta name="description" content="Halaman perpisahan siswa berbasis QR Code dengan pesan dan quote unik untuk setiap siswa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <img class="background-image" src="assets/foto-bersama.png" alt="Foto bersama siswa">
+    <div class="background-overlay"></div>
+
+    <section class="content-panel">
+      <article id="student-card" class="letter-card hidden" aria-live="polite">
+        <div class="letter-tab" aria-hidden="true">
+          <span class="letter-tab__dot"></span>
+          <span class="letter-tab__line"></span>
+        </div>
+        <blockquote id="student-quote" class="quote"></blockquote>
+        <p id="student-name" class="student-name"></p>
+        <p id="student-message" class="message"></p>
+      </article>
+
+      <article id="empty-state" class="letter-card state-copy hidden" aria-live="polite">
+        <div class="letter-tab" aria-hidden="true">
+          <span class="letter-tab__dot"></span>
+          <span class="letter-tab__line"></span>
+        </div>
+        <p id="state-message" class="message"></p>
+      </article>
+    </section>
+
+    <footer class="site-footer">
+      <p id="footer-text">SMK Contoh Nusantara | Angkatan 2026</p>
+    </footer>
+  </main>
+
+  <script src="students.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
